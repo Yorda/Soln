@@ -30,7 +30,28 @@ public class WebSiteUtil {
 		}
 		return feeds;
 	}
+	
+	public static String searchSyndicate(String html, String url) throws IOException {
+		Document doc = Jsoup.parse(html);
+		return searchSyndicate(doc, url);
+	}
 
+	public static String searchSyndicate(Document doc, String url) throws IOException {
+
+		String[] feedsType = { "link[type$=rss+xml]", "link[type$=atom+xml]" };
+		String feeds = null;
+
+		int i = 0;
+		while (feeds == null || i < feedsType.length) {
+			Elements elements = doc.select(feedsType[i]);
+			if (elements != null && elements.hasAttr("href")) {
+				feeds = getSyndicate(url, elements);
+			}
+			i++;
+		}
+		return feeds;
+	}
+	
 	private static String getSyndicate(String url, Elements elements) {
 		String href = elements.attr("href");
 		if (href.toLowerCase().indexOf("http") == -1) {

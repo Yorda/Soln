@@ -9,12 +9,11 @@ import java.io.IOException;
 public class FileUtil {
 
 	public static String readFileToSring(final String path)	
-				throws FileNotFoundException, IOException {
+			throws FileNotFoundException, IOException {
 
 		BufferedReader reader = null;
 		String s = null;
 		try {
-
 			File f = new File(path);
 			
 			reader = new BufferedReader(new FileReader(f));
@@ -29,7 +28,6 @@ public class FileUtil {
 		} finally {
 			reader.close();
 		}
-
 		return s;
 	}
 
