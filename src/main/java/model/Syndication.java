@@ -6,8 +6,10 @@ import java.util.List;
 
 public class Syndication implements Serializable {
 	private static final long serialVersionUID = -5995704417797241060L;
+	private Integer id;
 	private String name;
 	private String url;
+	private String websiteUrl;
 	private List<Article> articles;
 
 	public Syndication() {
@@ -40,5 +42,21 @@ public class Syndication implements Serializable {
 
 	public void setArticles(List<Article> articles) {
 		this.articles = articles;
+	}
+
+	public String getWebsiteUrl() {
+		return websiteUrl;
+	}
+
+	public void setWebsiteUrl(String websiteUrl) {
+		this.websiteUrl = websiteUrl;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 }

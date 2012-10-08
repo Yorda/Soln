@@ -1,6 +1,7 @@
 package all.business.impl;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Article;
@@ -20,10 +21,40 @@ public class SyndicationBusinessImpl implements SyndicationBusiness {
 		syndicateUtil = new SyndicateUtil();
 	}	
 	
+	
+	public List<Article> getLastPublications(String rssUrl) throws ExtractFeedException {
+		List<Article> articles = new ArrayList<Article>();
+		
+		if (!HttpUtil.isValidUrl(rssUrl)) {
+			throw new ExtractFeedException(ExtractFeedException.Error.BAD_URL);
+		}
+
+		String html = null;
+		try {
+			html = HttpUtil.htmlFromSite(rssUrl);
+		} catch (Exception e) {
+			throw new ExtractFeedException(ExtractFeedException.Error.GET_HTTP_DATA);
+		}
+		
+		try {
+			syndicateUtil.init(html);
+			List<SyndEntry> entries = syndicateUtil.lastEntries();
+			Article article = null;
+			for (SyndEntry entry : entries) {
+				article = new Article(entry.getLink(), entry.getPublishedDate(), entry.getTitle());
+				articles.add(article);
+			}
+		} catch (Exception e) {
+			throw new ExtractFeedException(ExtractFeedException.Error.GET_FEED_INFO);
+		}		
+		return articles;
+	}
+	
 	public Syndication searchSyndication(String url) throws ExtractFeedException {
 
 		Syndication syndication = new Syndication();
-
+		syndication.setWebsiteUrl(url);
+		
 		if (!HttpUtil.isValidUrl(url)) {
 			throw new ExtractFeedException(ExtractFeedException.Error.BAD_URL);
 		}
