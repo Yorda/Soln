@@ -21,6 +21,7 @@ public class SyndicateUtilTest {
 		URL url = null;
 		try {
 			url = new URL("http://www.pcinpact.com/rss/news.xml");
+			url = new URL("http://www.gizmodo.fr/feed");
 		} catch (MalformedURLException mue) {
 			fail("Bad syndication url");
 		}

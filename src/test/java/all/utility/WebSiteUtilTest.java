@@ -28,4 +28,6 @@ public class WebSiteUtilTest {
 		assertEquals("http://www.pcinpact.com/rss/news.xml", syndicate);
 	}
 
+	public static void main(String[] a){
+	}
 }
