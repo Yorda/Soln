@@ -10,8 +10,8 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.sun.syndication.feed.synd.SyndEntry;
-import com.sun.syndication.io.FeedException;
+import com.google.code.rome.android.repackaged.com.sun.syndication.feed.synd.SyndEntry;
+import com.google.code.rome.android.repackaged.com.sun.syndication.io.FeedException;
 
 public class SyndicateUtilTest {
 

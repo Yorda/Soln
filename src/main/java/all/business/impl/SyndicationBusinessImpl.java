@@ -12,7 +12,7 @@ import all.utility.HttpUtil;
 import all.utility.SyndicateUtil;
 import all.utility.WebSiteUtil;
 
-import com.sun.syndication.feed.synd.SyndEntry;
+import com.google.code.rome.android.repackaged.com.sun.syndication.feed.synd.SyndEntry;
 
 public class SyndicationBusinessImpl implements SyndicationBusiness {
 	private SyndicateUtil syndicateUtil;
@@ -33,6 +33,7 @@ public class SyndicationBusinessImpl implements SyndicationBusiness {
 		try {
 			html = HttpUtil.htmlFromSite(rssUrl);
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new ExtractFeedException(ExtractFeedException.Error.GET_HTTP_DATA);
 		}
 		
@@ -48,6 +49,7 @@ public class SyndicationBusinessImpl implements SyndicationBusiness {
 			throw new ExtractFeedException(ExtractFeedException.Error.GET_FEED_INFO);
 		}		
 		return articles;
+
 	}
 	
 	public Syndication searchSyndication(String url) throws ExtractFeedException {

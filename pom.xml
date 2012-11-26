@@ -1,15 +1,23 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>all.projects.utility</groupId>
-  <artifactId>Soln</artifactId>
-  <version>0.1</version>
-  <dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>all.projects.utility</groupId>
+	<artifactId>Soln</artifactId>
+	<version>0.1</version>
+	<repositories>
+		<repository>
+			<id>android-rome-feed-reader-repository</id>
+			<name>Android ROME Feed Reader Repository</name>
+			<url>https://android-rome-feed-reader.googlecode.com/svn/maven2/releases</url>
+		</repository>
+	</repositories>
+	<dependencies>
+		<!-- <dependency> <groupId>net.java.dev.rome</groupId> <artifactId>rome</artifactId> 
+			<version>1.0.0</version> <type>jar</type> <scope>compile</scope> </dependency> -->
 		<dependency>
-			<groupId>net.java.dev.rome</groupId>
-			<artifactId>rome</artifactId>
-			<version>1.0.0</version>
-			<type>jar</type>
-			<scope>compile</scope>
+			<groupId>com.google.code.android-rome-feed-reader</groupId>
+			<artifactId>android-rome-feed-reader</artifactId>
+			<version>1.0.0-r2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jsoup</groupId>
@@ -22,10 +30,10 @@
 			<version>4.10</version>
 		</dependency>
 		<dependency>
-  		<groupId>org.apache.httpcomponents</groupId>
-  		<artifactId>httpclient</artifactId>
-  		<version>4.2.1</version>
-  	</dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.2.1</version>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-vfs2</artifactId>
@@ -36,5 +44,5 @@
 			<artifactId>jsch</artifactId>
 			<version>0.1.49</version>
 		</dependency>
-  </dependencies>
+	</dependencies>
 </project>
