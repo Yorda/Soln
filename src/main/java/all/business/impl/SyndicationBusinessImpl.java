@@ -4,7 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Article;
+import model.Publication;
 import model.Syndication;
 import all.business.SyndicationBusiness;
 import all.exception.ExtractFeedException;
@@ -22,8 +22,8 @@ public class SyndicationBusinessImpl implements SyndicationBusiness {
 	}	
 	
 	
-	public List<Article> getLastPublications(String rssUrl) throws ExtractFeedException {
-		List<Article> articles = new ArrayList<Article>();
+	public List<Publication> getLastPublications(String rssUrl) throws ExtractFeedException {
+		List<Publication> publications = new ArrayList<Publication>();
 		
 		if (!HttpUtil.isValidUrl(rssUrl)) {
 			throw new ExtractFeedException(ExtractFeedException.Error.BAD_URL);
@@ -40,15 +40,19 @@ public class SyndicationBusinessImpl implements SyndicationBusiness {
 		try {
 			syndicateUtil.init(html);
 			List<SyndEntry> entries = syndicateUtil.lastEntries();
-			Article article = null;
+			Publication publication = null;
+			String description;
 			for (SyndEntry entry : entries) {
-				article = new Article(entry.getLink(), entry.getPublishedDate(), entry.getTitle());
-				articles.add(article);
+				description = entry.getDescription() != null 
+						? entry.getDescription().getValue() : null;
+				publication = new Publication(entry.getLink(),
+						entry.getPublishedDate(), entry.getTitle(), description);
+				publications.add(publication);
 			}
 		} catch (Exception e) {
 			throw new ExtractFeedException(ExtractFeedException.Error.GET_FEED_INFO);
 		}		
-		return articles;
+		return publications;
 
 	}
 	
@@ -102,10 +106,13 @@ public class SyndicationBusinessImpl implements SyndicationBusiness {
 		
 		syndication.setName(syndicateUtil.syndicationName());
 		List<SyndEntry> entries = syndicateUtil.lastEntries();
-		Article article = null;
+		Publication publication = null;
+		String description;
 		for (SyndEntry entry : entries) {
-			article = new Article(entry.getLink(), entry.getPublishedDate(), entry.getTitle());
-			syndication.addArticle(article);
+			description = entry.getDescription() != null 
+					? entry.getDescription().getValue() : null;
+			publication = new Publication(entry.getLink(), entry.getPublishedDate(), entry.getTitle(), description);
+			syndication.addPublication(publication);
 		}
 		
 		return syndication;

@@ -10,14 +10,14 @@ public class Syndication implements Serializable {
 	private String name;
 	private String url;
 	private String websiteUrl;
-	private List<Article> articles;
+	private List<Publication> publications;
 
 	public Syndication() {
-		setArticles(new ArrayList<Article>());
+		setPublications(new ArrayList<Publication>());
 	}
 
-	public void addArticle(Article article) {
-		articles.add(article);
+	public void addPublication(Publication publication) {
+		publications.add(publication);
 	}
 	
 	public String getName() {
@@ -36,12 +36,12 @@ public class Syndication implements Serializable {
 		this.url = url;
 	}
 
-	public List<Article> getArticles() {
-		return articles;
+	public List<Publication> getPublications() {
+		return publications;
 	}
 
-	public void setArticles(List<Article> articles) {
-		this.articles = articles;
+	public void setPublications(List<Publication> publications) {
+		this.publications = publications;
 	}
 
 	public String getWebsiteUrl() {

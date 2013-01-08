@@ -2,7 +2,7 @@ package all.business;
 
 import java.util.List;
 
-import model.Article;
+import model.Publication;
 import model.Syndication;
 import all.exception.ExtractFeedException;
 
@@ -19,11 +19,11 @@ public interface SyndicationBusiness {
 	public Syndication searchSyndication(String url) throws ExtractFeedException;
 	
 	/**
-	 * Get a list of last articles published for a syndication
+	 * Get a list of last publications published for a syndication
 	 * 
 	 * @param url
 	 * @return
 	 */
-	public List<Article> getLastPublications(String url) throws ExtractFeedException ;
+	public List<Publication> getLastPublications(String url) throws ExtractFeedException ;
 
 }

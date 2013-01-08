@@ -29,6 +29,7 @@ public class SyndicateUtilTest {
 		List<SyndEntry> entries = null;
 		try {
 			entries = SyndicateUtil.lastEntries(url);
+			//System.err.println(entries.get(0).getDescription().getValue());
 		} catch (IOException e) {
 			fail("Unable to get feeds");
 		} catch (FeedException e) {

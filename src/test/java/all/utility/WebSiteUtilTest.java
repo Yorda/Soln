@@ -21,11 +21,11 @@ public class WebSiteUtilTest {
 		assertEquals("http://linuxfr.org/news.atom", syndicate);
 		
 		try {
-			syndicate = WebSiteUtil.searchSyndicate("http://www.pcinpact.com/");
+			syndicate = WebSiteUtil.searchSyndicate("http://mediabenews.wordpress.com");
 		} catch (IOException ioe) {
 			fail("Unable to connect to web site");
 		}
-		assertEquals("http://www.pcinpact.com/rss/news.xml", syndicate);
+		assertEquals("http://mediabenews.wordpress.com/feed/", syndicate);
 	}
 
 	public static void main(String[] a){
