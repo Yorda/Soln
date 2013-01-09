@@ -15,6 +15,7 @@ public class Publication implements Serializable{
 		this.url = url;
 		this.publicationDate = publicationDate;
 		this.title = title;
+		this.description = description;
 	}
 	
 	public String getUrl() {
